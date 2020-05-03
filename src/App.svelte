@@ -10,18 +10,6 @@
     value
   }));
 
-  const getPreviousMonthDay = ({ year, month, offset }) => {
-    const previousMonthDay = new Date(year, month - 1);
-    const daysInPreviousMonth = getDaysInMonth(
-      new Date(previousMonthDay.getFullYear(), previousMonthDay.getMonth())
-    );
-    console.log(offset, daysInPreviousMonth);
-    return new Date(year, month - 1, daysInPreviousMonth - offset);
-  };
-
-  let countingDay = 1;
-  let offsetDay = 1;
-
   const today = new Date();
   const daysOfWeek = getWeekMap();
   let month = today.getMonth();
@@ -35,21 +23,10 @@
 
   $: calendarWeekDays = weeksInMonth.map(_week => {
     return Object.values(daysOfWeek).map(_day => {
-      let isDayFromPreviousMonth = _week === 0 && _day < firstDay;
-      let isDayFromNextMonth = countingDay > daysInMonth;
-      if (isDayFromPreviousMonth) {
-        return getPreviousMonthDay({
-          year,
-          month,
-          offset: firstDay - _day - 1
-        });
-      } else if (isDayFromNextMonth) {
-        return new Date(year, month, countingDay + offsetDay++ - 1);
-      } else {
-        return new Date(year, month, countingDay++ + offsetDay - 1);
-      }
+      return new Date(year, month, _week * 7 + (_day - firstDay + 1));
     });
   });
+  $: console.log(calendarWeekDays, firstDay);
 </script>
 
 <style>
@@ -83,14 +60,7 @@
 
 <main>
   <div class="calendar">
-    <SelectInput
-      bind:value={month}
-      name="month"
-      items={months}
-      onChange={() => {
-        countingDay = 1;
-        offsetDay = 1;
-      }} />
+    <SelectInput bind:value={month} name="month" items={months} />
     <div class="nowrap-container">
       {#each Object.keys(daysOfWeek) as dayOfWeek}
         <div class="flex-item">
