@@ -26,7 +26,6 @@
       return new Date(year, month, _week * 7 + (_day - firstDay + 1));
     });
   });
-  $: console.log(calendarWeekDays, firstDay);
 </script>
 
 <style>

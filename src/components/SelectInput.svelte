@@ -3,7 +3,6 @@
   export let id = "";
   export let items = [];
   export let value;
-  export let onChange;
 </script>
 
 <style>
@@ -13,7 +12,7 @@
   }
 </style>
 
-<select bind:value {name} {id} on:change={onChange}>
+<select bind:value {name} {id}>
   {#each items as item}
     <option value={item.value}>{item.label}</option>
   {/each}
