@@ -2,8 +2,8 @@
   import { format } from "date-fns";
   export let day;
   export let month;
-  let isOffsetMonth = day.getMonth() !== month.getMonth();
-  let isWeekendDay = day.getDay() === 6 || day.getDay() === 0;
+  $: isOffsetMonth = day.getMonth() !== month.getMonth();
+  $: isWeekendDay = day.getDay() === 6 || day.getDay() === 0;
 </script>
 
 <style>
