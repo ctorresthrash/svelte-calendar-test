@@ -1,5 +1,5 @@
 <script>
-  import { format } from "date-fns";
+  import { format, isToday } from "date-fns";
   export let day;
   export let month;
   $: isOffsetMonth = day.getMonth() !== month.getMonth();
@@ -43,11 +43,20 @@
   .offset-month p {
     color: var(--gray);
   }
+
+  .today {
+    background: var(--main-color-light);
+  }
+
+  .today p {
+    color: white;
+  }
 </style>
 
 <div
   class="container week-day"
   class:weekend-day={isWeekendDay}
-  class:offset-month={isOffsetMonth}>
+  class:offset-month={isOffsetMonth}
+  class:today={isToday(day)}>
   <p class="day">{format(day, 'd')}</p>
 </div>
