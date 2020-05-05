@@ -1,16 +1,30 @@
 <script>
   import { getContext } from "svelte";
   import { getDaysInMonth, isToday, getWeeksInMonth } from "date-fns";
+  import shortid from "shortid";
   import CalendarDay from "./CalendarDay.svelte";
   import CalendarTitle from "./CalendarTitle.svelte";
   import SelectInput from "./SelectInput.svelte";
   import ReminderForm from "./ReminderForm.svelte";
   import { getMonthMap, getWeekMap } from "../utils/index";
+  import { reminders } from "../stores/reminders";
 
-  const { open } = getContext("simple-modal");
+  const { open, close } = getContext("simple-modal");
 
-  const showReminderForm = () => {
-    open(ReminderForm);
+  const handleSubmitAddReminder = values => {
+    const id = shortid.generate();
+    $reminders = {
+      ...$reminders,
+      [id]: {
+        id,
+        ...values
+      }
+    };
+    close();
+  };
+
+  const showAddReminderForm = () => {
+    open(ReminderForm, { onSubmit: handleSubmitAddReminder });
   };
 
   const months = Object.entries(getMonthMap()).map(([key, value]) => ({
@@ -34,6 +48,8 @@
       return new Date(year, month, _week * 7 + (_day - firstDay + 1));
     });
   });
+
+  $: console.log($reminders);
 </script>
 
 <style>
@@ -55,7 +71,7 @@
 
 <div class="calendar">
   <SelectInput bind:value={month} name="month" items={months} />
-  <button on:click={showReminderForm}>Add Reminder</button>
+  <button on:click={showAddReminderForm}>Add Reminder</button>
   <div class="nowrap-container">
     {#each Object.keys(daysOfWeek) as dayOfWeek}
       <div class="flex-item">

@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "date-fns": "^2.12.0",
+    "shortid": "^2.2.15",
     "sirv-cli": "^0.4.4",
     "svelte-simple-modal": "^0.4.1",
     "sveltejs-forms": "^2.0.1",

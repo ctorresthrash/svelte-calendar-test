@@ -2,64 +2,24 @@
   import { Form, Input, Select, Choice } from "sveltejs-forms";
   import * as yup from "yup";
 
-  function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
-    setTimeout(() => {
-      console.log(values);
-      setSubmitting(false);
-      resetForm({
-        user: { email: "test@user.com" } // optional
-      });
-    }, 2000);
+  export let onSubmit = () => {};
 
-    /**
-     * {
-     *   user: {
-     *    email: 'email@example.com'
-     *   },
-     *   password: '123456',
-     *   language: 'svelte',
-     *   os: 'osx,linux'
-     * }
-     */
-  }
-
-  function handleReset() {
-    console.log("form has been reset");
+  function handleSubmit({ detail: { values } }) {
+    onSubmit(values);
   }
 
   const schema = yup.object().shape({
-    user: yup.object().shape({
-      email: yup
-        .string()
-        .required()
-        .email()
-    }),
-    password: yup.string().min(4),
-    language: yup.string().required(),
-    os: yup.string()
+    content: yup.string().required(),
+    date: yup.date()
   });
 
-  const langOptions = [
-    { id: "svelte", title: "Svelte" },
-    { id: "react", title: "React" },
-    { id: "angular", title: "Angular" }
-  ];
-
-  const osOptions = [
-    { id: "macos", title: "macOS" },
-    { id: "linux", title: "Linux 🐧" },
-    { id: "windows", title: "Windows" }
-  ];
-
   const initialValues = {
-    language: "svelte"
+    date: new Date()
   };
 </script>
 
 <style type="text/scss" global>
   .sveltejs-forms {
-    background-color: lightgray;
-    display: inline-block;
     padding: 1rem;
 
     .field {
@@ -80,22 +40,16 @@
 
 <Form
   {schema}
-  {initialValues}
   validateOnBlur={false}
   validateOnChange={false}
   on:submit={handleSubmit}
-  on:reset={handleReset}
   let:isSubmitting
   let:isValid>
+  <Input name="content" label="Content" placeholder="Reminder Content" />
   <Input
-    name="user.email"
-    label="Email Address"
-    value="test@user.com"
-    placeholder="e.g. user@example.com" />
-  <Input name="password" type="password" placeholder="Password" />
-  <Select name="language" options={langOptions} />
-  <Choice name="os" options={osOptions} disabled multiple />
-  <button type="reset">Reset</button>
+    name="date"
+    type="datetime-local"
+    label="Date"
+    placeholder="Reminder Date" />
   <button type="submit" disabled={isSubmitting}>Sign in</button>
-  The form is valid: {isValid}
 </Form>
