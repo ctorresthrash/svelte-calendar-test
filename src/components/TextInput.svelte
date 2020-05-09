@@ -4,6 +4,7 @@
   export let name = "";
   export let value = "";
   export let type = "text";
+  export let error;
 </script>
 
 <label for={id}>
@@ -16,4 +17,7 @@
     {type}
     {value}
     on:change />
+  {#if error}
+    <small class="text-red-500">{error}</small>
+  {/if}
 </label>
