@@ -1,3 +1,7 @@
+<script>
+  export let type = "button";
+</script>
+
 <style type="text/scss">
   button {
     &:active {
@@ -10,8 +14,9 @@
 </style>
 
 <button
-  class="border-none bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none
-  focus:shadow-outline hover:bg-blue-400"
+  {type}
+  class="border-none bg-blue-500 text-white font-bold py-2 px-4 rounded
+  focus:outline-none focus:shadow-outline hover:bg-blue-400"
   on:click>
   <slot />
 </button>
