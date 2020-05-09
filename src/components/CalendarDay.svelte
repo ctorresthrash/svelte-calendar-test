@@ -59,4 +59,5 @@
   class:offset-month={isOffsetMonth}
   class:today={isToday(day)}>
   <p class="day">{format(day, 'd')}</p>
+  <slot name="content" />
 </div>
