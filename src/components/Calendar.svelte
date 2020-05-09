@@ -53,7 +53,7 @@
   $: console.log($remindersByDate);
 </script>
 
-<div class="w-4/5 m-auto">
+<div class="w-4/5 m-auto bg-white p-8 rounded-md shadow-md">
   <h1 class="text-2xl text-gray-700">Reminders Calendar</h1>
   <div class="flex flex-row justify-between my-4">
     <SelectInput bind:value={month} name="month" items={months} />
