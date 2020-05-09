@@ -4,7 +4,7 @@
 
 <style type="text/scss">
   .container {
-    @apply bg-blue-500 ;
+    @apply bg-blue-500 py-1;
      p {
       @apply text-gray-200 text-center;
     }
