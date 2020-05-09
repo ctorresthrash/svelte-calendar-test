@@ -17,7 +17,7 @@
   }
 
   .week-day {
-    @apply bg-white text-black;
+    @apply bg-white text-gray-700;
   }
 
   .weekend-day {
