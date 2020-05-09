@@ -54,15 +54,15 @@
 </script>
 
 <div class="w-4/5 m-auto">
-  <h1 class="text-2xl">Reminders Calendar</h1>
-  <div class="flex flex-row justify-between my-2">
+  <h1 class="text-2xl text-gray-700">Reminders Calendar</h1>
+  <div class="flex flex-row justify-between my-4">
     <SelectInput bind:value={month} name="month" items={months} />
     <Button on:click={showAddReminderForm}>Add Reminder</Button>
   </div>
   <div class="flex flex-no-wrap flex-row">
     {#each Object.keys(daysOfWeek) as dayOfWeek}
       <div class="flex-1">
-        <CalendarTitle title={dayOfWeek} />
+        <CalendarTitle title={dayOfWeek.substring(0, 3)} />
       </div>
     {/each}
   </div>
