@@ -53,40 +53,23 @@
   $: console.log($remindersByDate);
 </script>
 
-<style>
-  .calendar {
-    width: 1024px;
-    margin: auto;
-  }
-
-  .nowrap-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-
-  .flex-item {
-    flex: 1;
-  }
-</style>
-
-<div class="calendar">
+<div class="w-4/5 m-auto">
   <h1 class="text-2xl">Reminders Calendar</h1>
   <div class="flex flex-row justify-between my-2">
     <SelectInput bind:value={month} name="month" items={months} />
     <Button on:click={showAddReminderForm}>Add Reminder</Button>
   </div>
-  <div class="nowrap-container">
+  <div class="flex flex-no-wrap flex-row">
     {#each Object.keys(daysOfWeek) as dayOfWeek}
-      <div class="flex-item">
+      <div class="flex-1">
         <CalendarTitle title={dayOfWeek} />
       </div>
     {/each}
   </div>
   {#each calendarWeekDays as week}
-    <div class="nowrap-container">
+    <div class="flex flex-no-wrap flex-row">
       {#each week as day}
-        <div class="flex-item">
+        <div class="flex-1">
           <CalendarDay {day} month={calendarMonth} />
         </div>
       {/each}

@@ -10,8 +10,7 @@
   .container {
     margin-right: -1px;
     margin-top: -1px;
-    height: 150px;
-    @apply border border-gray-500 border-solid;
+    @apply border border-gray-500 border-solid h-32;
     p {
       @apply py-2 m-0 text-center;
     }

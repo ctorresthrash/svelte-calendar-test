@@ -2,18 +2,15 @@
   export let title;
 </script>
 
-<style>
+<style type="text/scss">
   .container {
-    background-color: var(--main-color);
-    border: var(--cell-border-width) solid black;
-    margin-right: -1px;
-  }
-  .title {
-    color: var(--light-gray);
-    text-align: center;
+    @apply bg-blue-500 ;
+     p {
+      @apply text-gray-200 text-center;
+    }
   }
 </style>
 
 <div class="container">
-  <p class="title">{title}</p>
+  <p>{title}</p>
 </div>
