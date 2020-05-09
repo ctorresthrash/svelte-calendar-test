@@ -1,19 +1,17 @@
 <style type="text/scss">
   button {
-    @apply px-4 py-2 rounded font-semibold bg-blue-600 text-white rounded-md border-transparent;
-    &:hover,
-    &:focus {
-      @apply bg-blue-500 outline-none;
-    }
     &:active {
       @apply bg-blue-700;
     }
     &:disabled {
-      @apply bg-blue-200;
+      @apply bg-blue-200 text-white;
     }
   }
 </style>
 
-<button on:click>
+<button
+  class="border-none bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none
+  focus:shadow-outline hover:bg-blue-400"
+  on:click>
   <slot />
 </button>
