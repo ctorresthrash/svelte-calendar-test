@@ -6,8 +6,9 @@
   import CalendarTitle from "./CalendarTitle.svelte";
   import SelectInput from "./SelectInput.svelte";
   import ReminderForm from "./ReminderForm.svelte";
+  import Button from "./Button.svelte";
   import { getMonthMap, getWeekMap } from "../utils/index";
-  import { reminders } from "../stores/reminders";
+  import { reminders, remindersByDate } from "../stores/reminders";
 
   const { open, close } = getContext("simple-modal");
 
@@ -49,7 +50,7 @@
     });
   });
 
-  $: console.log($reminders);
+  $: console.log($remindersByDate);
 </script>
 
 <style>
@@ -67,11 +68,16 @@
   .flex-item {
     flex: 1;
   }
+
+  h1 {
+    @apply text-lg;
+  }
 </style>
 
 <div class="calendar">
+  <h1>Reminders Calendar</h1>
   <SelectInput bind:value={month} name="month" items={months} />
-  <button on:click={showAddReminderForm}>Add Reminder</button>
+  <Button on:click={showAddReminderForm}>Add Reminder</Button>
   <div class="nowrap-container">
     {#each Object.keys(daysOfWeek) as dayOfWeek}
       <div class="flex-item">
