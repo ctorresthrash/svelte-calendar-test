@@ -68,16 +68,14 @@
   .flex-item {
     flex: 1;
   }
-
-  h1 {
-    @apply text-lg;
-  }
 </style>
 
 <div class="calendar">
-  <h1>Reminders Calendar</h1>
-  <SelectInput bind:value={month} name="month" items={months} />
-  <Button on:click={showAddReminderForm}>Add Reminder</Button>
+  <h1 class="text-2xl">Reminders Calendar</h1>
+  <div class="flex flex-row justify-between my-2">
+    <SelectInput bind:value={month} name="month" items={months} />
+    <Button on:click={showAddReminderForm}>Add Reminder</Button>
+  </div>
   <div class="nowrap-container">
     {#each Object.keys(daysOfWeek) as dayOfWeek}
       <div class="flex-item">
