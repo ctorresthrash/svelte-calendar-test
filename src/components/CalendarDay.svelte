@@ -6,50 +6,31 @@
   $: isWeekendDay = day.getDay() === 6 || day.getDay() === 0;
 </script>
 
-<style>
+<style type="text/scss">
   .container {
-    border: var(--cell-border-width) solid black;
     margin-right: -1px;
     margin-top: -1px;
     height: 150px;
-  }
-
-  .container p {
-    text-align: center;
-    margin: 0;
-    padding: 10px 0;
+    @apply border border-gray-500 border-solid;
+    p {
+      @apply py-2 m-0 text-center;
+    }
   }
 
   .week-day {
-    background-color: white;
-  }
-
-  .week-day p {
-    color: black;
+    @apply bg-white text-black;
   }
 
   .weekend-day {
-    background: var(--light-gray);
-  }
-
-  .weekend-day p {
-    color: var(--main-color);
+    @apply bg-gray-200 text-blue-500;
   }
 
   .offset-month {
-    background: var(--light-gray);
-  }
-
-  .offset-month p {
-    color: var(--gray);
+    @apply bg-gray-200 text-gray-500;
   }
 
   .today {
-    background: var(--main-color-light);
-  }
-
-  .today p {
-    color: white;
+    @apply bg-blue-300 text-white;
   }
 </style>
 
