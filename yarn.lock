@@ -1138,7 +1138,7 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
-lodash-es@^4.17.11, lodash-es@~4.17.15:
+lodash-es@^4.17.11:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
   integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
@@ -1610,6 +1610,11 @@ process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
+
+property-expr@1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/property-expr/-/property-expr-1.5.1.tgz#22e8706894a0c8e28d58735804f6ba3a3673314f"
+  integrity sha512-CGuc0VUTGthpJXL36ydB6jnbyOf/rAHFvmVrJlH+Rg0DqqLFQGAP6hIaxD/G0OAmBJPhXDHuEJigrp0e0wFV6g==
 
 property-expr@^2.0.2:
   version "2.0.2"
@@ -2100,6 +2105,14 @@ svelte-calendar@^1.5.0:
   dependencies:
     timeUtils "2.0.0"
 
+svelte-forms-lib@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/svelte-forms-lib/-/svelte-forms-lib-1.1.0.tgz#db7668b5a1d027b4ecd1f97d30cc1c7bc541eaa4"
+  integrity sha512-DVrajFYPyFXlEdTRjkCHIwt0ai59pXqKCfsWLqYg+a0pvsPFPXJ8U4GWoaRAjC3G/JegSyI2tYyDFP2eYz45QQ==
+  dependencies:
+    property-expr "1.5.1"
+    svelte "3.16.5"
+
 svelte-preprocess@^3.7.4:
   version "3.7.4"
   resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-3.7.4.tgz#d10cf9b7c96c2b123da90438a3e9814737347e8d"
@@ -2115,23 +2128,15 @@ svelte-simple-modal@^0.4.1:
   resolved "https://registry.yarnpkg.com/svelte-simple-modal/-/svelte-simple-modal-0.4.2.tgz#2cfe26ec8c0760b89813d65dfee836399620d6b2"
   integrity sha512-NvvHzCuHTv4L0jfFR9vy5Nq0Mo9aBk+8ZHJQ7OrBX6Jj9b+AfQai/fpYAnYhsVT5rMi4kIItfMf2ZpDzbzKCqg==
 
-svelte-writable-derived@~2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/svelte-writable-derived/-/svelte-writable-derived-2.0.1.tgz#268165145bf44c9349b153381985516c76bf4a58"
-  integrity sha512-aQ0p4rpFjcfemh0mzXEzQcAbXCC9r8fnHo49Hlx/e14O2T44pJMYiuBwJcciGtDT+b8HRxikAS+DUdwJf3RIPw==
+svelte@3.16.5:
+  version "3.16.5"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.16.5.tgz#d7073efcbf73ce6b112a858e17c81123ce9ec472"
+  integrity sha512-iYOhJc7iczaonycuKjPgmy1lthhBoDOQo5UVhgKJRd3XYRdnYPPb0LvvJ0t7jqu5+15S0msMm06WSOKUvhEZsw==
 
 svelte@^3.0.0:
   version "3.22.2"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.22.2.tgz#06585244191bf7a112af2a0025610f33d77c3715"
   integrity sha512-DxumO0+vvHA6NSc2jtVty08I8lFI43q8P2zX6JxZL8J1kqK5NVjad6TRM/twhnWXC+QScnwkZ15O6X1aTsEKTA==
-
-sveltejs-forms@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/sveltejs-forms/-/sveltejs-forms-2.0.1.tgz#ddab6d2d29fdabdfe3e81a4d511e0fc16ae52599"
-  integrity sha512-Ye+wD2ZvFbUTO4RzvxT0xwymboQE4m9nrIx4kQWxnAsPJRqkS6XU7CZx2DXsMkOqKGSZ7cEpHTy39S9bXLb6TQ==
-  dependencies:
-    lodash-es "~4.17.15"
-    svelte-writable-derived "~2.0.1"
 
 synchronous-promise@^2.0.10:
   version "2.0.11"

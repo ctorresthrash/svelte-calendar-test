@@ -1,55 +1,48 @@
 <script>
-  import { Form, Input, Select, Choice } from "sveltejs-forms";
-  import * as yup from "yup";
+  import { createForm } from "svelte-forms-lib";
+  import Button from "./Button.svelte";
+  import TextInput from "./TextInput.svelte";
 
   export let onSubmit = () => {};
 
-  function handleSubmit({ detail: { values } }) {
-    onSubmit(values);
-  }
-
-  const schema = yup.object().shape({
-    content: yup.string().required(),
-    date: yup.date()
+  const { form, handleChange, handleSubmit } = createForm({
+    initialValues: {
+      content: "",
+      date: "",
+      city: ""
+    },
+    onSubmit: values => {
+      onSubmit(values);
+    }
   });
-
-  const initialValues = {
-    date: new Date()
-  };
 </script>
 
-<style type="text/scss" global>
-  .sveltejs-forms {
-    padding: 1rem;
+<form class="bg-white px-8 pt-6 pb-8 mb-4" on:submit={handleSubmit}>
+  <div class="mb-4">
+    <TextInput
+      id="content"
+      name="content"
+      label="Content"
+      on:change={handleChange}
+      value={$form.content} />
+  </div>
+  <div class="mb-4">
+    <TextInput
+      id="date"
+      name="date"
+      label="Date"
+      type="datetime-local"
+      on:change={handleChange}
+      value={$form.content} />
+  </div>
+  <div class="mb-6">
+    <TextInput
+      id="city"
+      name="city"
+      label="City"
+      on:change={handleChange}
+      value={$form.city} />
+  </div>
 
-    .field {
-      margin-bottom: 1rem;
-      &.error {
-        input {
-          border: 1px solid red;
-        }
-        .message {
-          margin-top: 0.2rem;
-          color: red;
-          font-size: 0.8rem;
-        }
-      }
-    }
-  }
-</style>
-
-<Form
-  {schema}
-  validateOnBlur={false}
-  validateOnChange={false}
-  on:submit={handleSubmit}
-  let:isSubmitting
-  let:isValid>
-  <Input name="content" label="Content" placeholder="Reminder Content" />
-  <Input
-    name="date"
-    type="datetime-local"
-    label="Date"
-    placeholder="Reminder Date" />
-  <button type="submit" disabled={isSubmitting}>Sign in</button>
-</Form>
+  <Button type="submit">Submit</Button>
+</form>
