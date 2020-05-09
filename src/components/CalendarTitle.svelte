@@ -2,15 +2,6 @@
   export let title;
 </script>
 
-<style type="text/scss">
-  .container {
-    @apply bg-blue-500 py-1;
-     p {
-      @apply text-gray-200 text-center;
-    }
-  }
-</style>
-
-<div class="container">
-  <p>{title}</p>
+<div class="bg-blue-500 py-1">
+  <p class="text-center text-gray-200 font-semibold">{title}</p>
 </div>
