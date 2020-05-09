@@ -12,6 +12,7 @@
       city: ""
     },
     onSubmit: values => {
+      console.log(values);
       onSubmit(values);
     }
   });
@@ -33,7 +34,7 @@
       label="Date"
       type="datetime-local"
       on:change={handleChange}
-      value={$form.content} />
+      value={$form.date} />
   </div>
   <div class="mb-6">
     <TextInput
