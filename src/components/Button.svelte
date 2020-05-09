@@ -8,6 +8,9 @@
     &:active {
       @apply bg-blue-700;
     }
+    &:disabled {
+      @apply bg-blue-200;
+    }
   }
 </style>
 
