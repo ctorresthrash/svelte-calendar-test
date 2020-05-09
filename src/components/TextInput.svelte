@@ -3,6 +3,7 @@
   export let label = "";
   export let name = "";
   export let value = "";
+  export let type = "text";
 </script>
 
 <label for={id}>
@@ -12,6 +13,7 @@
     leading-tight focus:outline-none focus:shadow-outline"
     {id}
     {name}
-    on:change
-    bind:value />
+    {type}
+    {value}
+    on:change />
 </label>
