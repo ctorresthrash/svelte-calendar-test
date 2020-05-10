@@ -1,6 +1,6 @@
 import { writable, derived } from "svelte/store";
 import _ from "lodash/fp";
-import { format, parse, parseISO } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 export const reminders = writable({});
 
