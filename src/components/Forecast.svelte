@@ -1,4 +1,5 @@
 <script>
+  import { tick } from "svelte";
   import { scale } from "svelte/transition";
   import Axios from "axios";
   import _ from "lodash/fp";
@@ -7,6 +8,7 @@
   export let date;
   export let city;
   export let time;
+  let forecast = null;
 
   const OPEN_WEATHER_API_KEY = "c50d82d239feff96cee0695ce898171e";
   const OPEN_WEATHER_BASE_URL = "http://api.openweathermap.org";
@@ -22,6 +24,7 @@
   const getForecast = async (_date, _time, _city) => {
     if (_date && _time && _city) {
       try {
+        await tick();
         const parsedDate = parse(
           `${_date} ${_time}`,
           "yyyy-MM-dd HH:mm",
@@ -55,7 +58,7 @@
         );
         const isFromSameDay =
           differenceInDays(closestForecastDate, parsedDate) === 0;
-        return isFromSameDay
+        forecast = isFromSameDay
           ? closestForecast
           : { message: "Forecast not found" };
       } catch (error) {
@@ -65,7 +68,7 @@
     }
     return null;
   };
-  $: forecast = getForecast(date, time, city);
+  $: getForecast(date, time, city);
 </script>
 
 {#await forecast then data}
