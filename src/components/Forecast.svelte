@@ -72,7 +72,7 @@
 </script>
 
 {#if forecast}
-  <span transition:scale class="bg-blue-200 border-blue-500 border-t-2 p-2 rounded-md text-blue-800">
+  <p transition:scale class="bg-blue-200 border-blue-500 border-t-2 px-2 rounded-md text-blue-800 w-full">
     {#if Boolean(getForecastDescription(forecast))}
       {`Weather forecast: ${getForecastDescription(forecast)} `}
       <img
@@ -80,5 +80,5 @@
         alt={getForecastDescription(forecast)}
         src={`${OPEN_WEATHER_BASE_URL}/img/w/${getForecastIcon(forecast)}.png`} />
     {:else}Forecast not found{/if}
-  </span>
+  </p>
 {/if}
