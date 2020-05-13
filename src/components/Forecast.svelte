@@ -32,10 +32,10 @@
         );
         const response = await Axios({
           method: "GET",
-          url: `/data/2.5/forecast?q=${_city}&appid=${OPEN_WEATHER_API_KEY}`
+          url: `/data/2.5/forecast?q=${_city}&appid=${OPEN_WEATHER_API_KEY}`,
         });
         const forecastList = _.getOr([], "data.list", response);
-        const closestForecast = forecastList.reduce(function(prev, curr) {
+        const closestForecast = forecastList.reduce(function (prev, curr) {
           const currentDate = parse(
             curr.dt_txt,
             "yyyy-MM-dd HH:mm:ss",
@@ -71,16 +71,14 @@
   $: getForecast(date, time, city);
 </script>
 
-{#await forecast then data}
-  {#if data}
-    <span transition:scale class="bg-blue-200 p-2 rounded-md text-blue-800">
-      {#if Boolean(getForecastDescription(data))}
-        {`Weather forecast: ${getForecastDescription(data)} `}
-        <img
-          class="inline"
-          alt={getForecastDescription(data)}
-          src={`${OPEN_WEATHER_BASE_URL}/img/w/${getForecastIcon(data)}.png`} />
-      {:else}Forecast not found{/if}
-    </span>
-  {/if}
-{/await}
+{#if forecast}
+  <span transition:scale class="bg-blue-200 border-blue-500 border-t-2 p-2 rounded-md text-blue-800">
+    {#if Boolean(getForecastDescription(forecast))}
+      {`Weather forecast: ${getForecastDescription(forecast)} `}
+      <img
+        class="inline"
+        alt={getForecastDescription(forecast)}
+        src={`${OPEN_WEATHER_BASE_URL}/img/w/${getForecastIcon(forecast)}.png`} />
+    {:else}Forecast not found{/if}
+  </span>
+{/if}
